@@ -381,12 +381,6 @@ var Tourguide = (function () {
 	        var _image = umbrella_min("<div role=\"figure\" class=\"guided-tour-step-image\">" + (this.image ? "<img src=\"" + this.image + "\" />" : "") + "</div>");
 	        var _title = umbrella_min("<div role=\"heading\" class=\"guided-tour-step-title\">" + this.title + "</div>");
 	        var content = umbrella_min("<div class=\"guided-tour-step-content\">" + this.content + "</div>");
-	        footer.find(".guided-tour-step-button-next").on("click", this.context.next);
-	        footer.find(".guided-tour-step-button-close").on("click", this.context.stop);
-	        footer.find(".guided-tour-step-button-complete").on("click", this.context.complete);
-	        footer.find(".guided-tour-step-footer-bullets li").on("click", function (e) {
-	          return _this.context.go(parseInt(umbrella_min(e.target).data("index")));
-	        });
 	        var highlight = this.highlight = umbrella_min("<div class=\"guided-tour-step-highlight\"></div>");
 	        highlight.on("click", this.context.action);
 	        var tooltip = this.tooltip = umbrella_min("<div role=\"tooltip\" class=\"guided-tour-step-tooltip\"></div>");
