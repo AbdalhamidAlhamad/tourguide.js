@@ -9,7 +9,6 @@ var u=function(t,e){return this instanceof u?t instanceof u?t:("string"==typeof 
 });
 var umbrella_min_1 = umbrella_min.u;
 
-var Icons = "<svg id=\"GuidedTourIconSet\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<symbol id=\"tour-icon-close\" viewBox=\"0 0 20 20\"><path d=\"M16,16 L4,4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></path><path d=\"M16,4 L4,16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></path></symbol>\n<symbol id=\"tour-icon-next\" viewBox=\"0 0 20 20\"><polyline points=\"7 4 13 10 7 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></polyline></symbol>\n<symbol id=\"tour-icon-complete\" viewBox=\"0 0 20 20\"><polyline points=\"4,10 8,15 17,4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></polyline></symbol>\n</svg>";
 
 var COMPLETE = 'complete',
     CANCELED = 'canceled';
@@ -392,7 +391,7 @@ var Step = function () {
         highlight.on("click", this.context.action);
         var tooltip = this.tooltip = umbrella_min("<div role=\"tooltip\" class=\"guided-tour-step-tooltip\"></div>");
         var arrow = this.arrow = umbrella_min("<div aria-hidden=\"true\" class=\"guided-tour-arrow\"></div>");
-        tooltip.append(arrow).append(_image).append(_title).append(content).append(footer);
+        tooltip.append(arrow).append(_image).append(_title).append(content);
         this.container = umbrella_min("<div role=\"dialog\" class=\"guided-tour-step" + (this.first ? " guided-tour-step-first" : "") + (this.last ? " guided-tour-step-last" : "") + "\"></div>");
         this.container.append(highlight).append(tooltip);
       }
@@ -430,6 +429,8 @@ var Step = function () {
     this.visible = false;
     this._target = null;
     this.context = context;
+    this._timerHandler = null;
+    this._scrollCancel = null;
     var data = void 0;
     if ((typeof step === "undefined" ? "undefined" : _typeof(step)) === "object") {
       if (!(step.hasOwnProperty("title") && step.hasOwnProperty("content") && step.hasOwnProperty("step"))) {
@@ -542,10 +543,17 @@ var Step = function () {
       style.opacity = 1;
     }
   }, {
+    key: "cancel",
+    value: function cancel() {
+      if (this._timerHandler) clearTimeout(this._timerHandler);
+      if (this._scrollCancel) this._scrollCancel();
+    }
+  }, {
     key: "show",
     value: function show() {
       var _this3 = this;
 
+      this.cancel();
       if (!this.visible) {
         var show = function show() {
           _this3.position();
@@ -554,10 +562,11 @@ var Step = function () {
           _this3.visible = true;
         };
         if (this.target) {
-          scrollIntoView(this.target, {
-            time: this.context.options.animationspeed
+          this._scrollCancel = scrollIntoView(this.target, {
+            time: this.context.options.animationspeed,
+            cancellable: true
           }, show);
-        } else setTimeout(show, this.context.options.animationspeed);
+        } else this._timerHandler = setTimeout(show, this.context.options.animationspeed);
         return true;
       }
       return false;
@@ -565,6 +574,7 @@ var Step = function () {
   }, {
     key: "hide",
     value: function hide() {
+      this.cancel();
       if (this.visible) {
         this.el.removeClass("active");
         this.tooltip.removeClass("guided-tour-arrow-top");
@@ -744,7 +754,6 @@ var Tour = function () {
     this.go = this.go.bind(this);
     this.stop = this.stop.bind(this);
     this.complete = this.complete.bind(this);
-    this._injectIcons();
     if (_typeof(this._options.steps) === "object" && Array.isArray(this._options.steps)) {
       this._stepsSrc = StepsSource.JSON;
       this._steps = this._options.steps.map(function (o) {
@@ -769,13 +778,6 @@ var Tour = function () {
   }
 
   createClass(Tour, [{
-    key: "_injectIcons",
-    value: function _injectIcons() {
-      if (umbrella_min("#GuidedTourIconSet").length === 0) {
-        umbrella_min("body").append(umbrella_min(Icons));
-      }
-    }
-  }, {
     key: "init",
     value: function init() {
       var _this2 = this;
