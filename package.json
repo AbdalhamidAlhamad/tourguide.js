@@ -1,13 +1,13 @@
 {
   "name": "tourguidejs",
-  "version": "1.1.2",
+  "version": "0.3.0",
   "src": "src/Tour.js",
   "main": "tourguide.js",
   "module": "tourguide.esm.js",
-  "description": "Guided tour feature plugin for docsie manager",
-  "homepage": "https://github.com/LikaloLLC/tourguide.js",
+  "description": "Guided tour feature plugin for docsie manager without icons",
+  "homepage": "https://github.com/AbdalhamidAlhamad/tourguide.js",
   "bugs": {
-    "url": "https://github.com/LikaloLLC/tourguide.js/issues"
+    "url": "https://github.com/AbdalhamidAlhamad/tourguide.js/issues"
   },
   "files": [
     "tourguide.*"
@@ -28,7 +28,7 @@
   "license": "BSD 3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LikaloLLC/tourguide.js"
+    "url": "https://github.com/AbdalhamidAlhamad/tourguide.js"
   },
   "engines": {
     "npm": ">=3.0.0",
