@@ -1,8 +1,9 @@
 # Tourguide.js
-Sprintive Example
+Custom version of tourguides without icons
 ######  Simple, lightweight library for creating guided tours for your web, apps and more.
 
 >  A **tour guide** is a  person who provides assistance, information on cultural, historical and  contemporary heritage to people on organized [tours](https://en.wikipedia.org/wiki/Tourism)  and individual clients at educational establishments, religious and  historical sites, museums, and at venues of other significant interest,  attractions sites. [[https://en.wikipedia.org/wiki/Tour_guide](https://en.wikipedia.org/wiki/Tour_guide)]
+
 
 ### Fiddle with It
 
