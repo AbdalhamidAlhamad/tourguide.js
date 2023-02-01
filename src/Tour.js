@@ -1,5 +1,4 @@
 import u from "umbrellajs";
-import Icons from "./icons";
 import Step from "./step";
 import Background from "./background";
 import { clamp } from "./utils";
@@ -74,7 +73,6 @@ export default class Tour {
     this.go = this.go.bind(this);
     this.stop = this.stop.bind(this);
     this.complete = this.complete.bind(this);
-    this._injectIcons();
     if (typeof this._options.steps === "object" && Array.isArray(this._options.steps)) {
       this._stepsSrc = StepsSource.JSON;
       this._steps = this._options.steps.map(o => new Step(
@@ -98,11 +96,7 @@ export default class Tour {
       throw new Error("Tour is not configured properly. Check documentation.");
     }
   }
-  _injectIcons() {
-    if (u("#GuidedTourIconSet").length === 0) {
-      u("body").append(u(Icons));
-    }
-  }
+
   init() {
     this.reset();
     this._background = new Background(this);

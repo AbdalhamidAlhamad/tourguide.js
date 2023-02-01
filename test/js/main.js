@@ -617,7 +617,6 @@ var Tour = function () {
     this.go = this.go.bind(this);
     this.stop = this.stop.bind(this);
     this.complete = this.complete.bind(this);
-    this._injectIcons();
     if (_typeof(this._options.steps) === "object" && Array.isArray(this._options.steps)) {
       this._stepsSrc = StepsSource.JSON;
       this._steps = this._options.steps.map(function (o) {
@@ -642,13 +641,6 @@ var Tour = function () {
   }
 
   createClass(Tour, [{
-    key: "_injectIcons",
-    value: function _injectIcons() {
-      if (umbrella_min("#GuidedTourIconSet").length === 0) {
-        umbrella_min("body").append(umbrella_min(Icons));
-      }
-    }
-  }, {
     key: "init",
     value: function init() {
       var _this2 = this;
