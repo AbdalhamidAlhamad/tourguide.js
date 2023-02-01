@@ -1,11 +1,27 @@
+// var calculateMonthlyPayment = function (principal, years, rate) {
+//     if (rate) {
+//         var monthlyRate = rate / 100 / 12;
+//     }
+//     var monthlyPayment = principal * monthlyRate / (1 - (Math.pow(1 / (1 + monthlyRate), years * 12)));
+//     return monthlyPayment;
+// };
+
+// document.getElementById('calcBtn').addEventListener('click', function () {
+//     var principal = document.getElementById("principal").value;
+//     var years = document.getElementById("years").value;
+//     var rate = document.getElementById("rate").value;
+//     var monthlyPayment = calculateMonthlyPayment(principal, years, rate);
+//     document.getElementById("monthlyPayment").innerHTML = monthlyPayment.toFixed(2);
+// });
+
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
 var umbrella_min = createCommonjsModule(function (module) {
-/* Umbrella JS 3.2.2 umbrellajs.com */
+/* Umbrella JS 3.1.0 umbrellajs.com */
 
-var u=function(t,e){return this instanceof u?t instanceof u?t:("string"==typeof t&&(t=this.select(t,e)),t&&t.nodeName&&(t=[t]),void(this.nodes=this.slice(t))):new u(t,e)};u.prototype={get length(){return this.nodes.length}},u.prototype.nodes=[],u.prototype.addClass=function(){return this.eacharg(arguments,function(t,e){t.classList.add(e);})},u.prototype.adjacent=function(i,t,n){return "number"==typeof t&&(t=0===t?[]:new Array(t).join().split(",").map(Number.call,Number)),this.each(function(r,o){var e=document.createDocumentFragment();u(t||{}).map(function(t,e){var n="function"==typeof i?i.call(this,t,e,r,o):i;return "string"==typeof n?this.generate(n):u(n)}).each(function(t){this.isInPage(t)?e.appendChild(u(t).clone().first()):e.appendChild(t);}),n.call(this,r,e);})},u.prototype.after=function(t,e){return this.adjacent(t,e,function(t,e){t.parentNode.insertBefore(e,t.nextSibling);})},u.prototype.append=function(t,e){return this.adjacent(t,e,function(t,e){t.appendChild(e);})},u.prototype.args=function(t,e,n){return "function"==typeof t&&(t=t(e,n)),"string"!=typeof t&&(t=this.slice(t).map(this.str(e,n))),t.toString().split(/[\s,]+/).filter(function(t){return t.length})},u.prototype.array=function(o){o=o;var i=this;return this.nodes.reduce(function(t,e,n){var r;return o?((r=o.call(i,e,n))||(r=!1),"string"==typeof r&&(r=u(r)),r instanceof u&&(r=r.nodes)):r=e.innerHTML,t.concat(!1!==r?r:[])},[])},u.prototype.attr=function(t,e,r){return r=r?"data-":"",this.pairs(t,e,function(t,e){return t.getAttribute(r+e)},function(t,e,n){t.setAttribute(r+e,n);})},u.prototype.before=function(t,e){return this.adjacent(t,e,function(t,e){t.parentNode.insertBefore(e,t);})},u.prototype.children=function(t){return this.map(function(t){return this.slice(t.children)}).filter(t)},u.prototype.clone=function(){return this.map(function(t,e){var n=t.cloneNode(!0),r=this.getAll(n);return this.getAll(t).each(function(t,e){for(var n in this.mirror)this.mirror[n]&&this.mirror[n](t,r.nodes[e]);}),n})},u.prototype.getAll=function(t){return u([t].concat(u("*",t).nodes))},u.prototype.mirror={},u.prototype.mirror.events=function(t,e){if(t._e)for(var n in t._e)t._e[n].forEach(function(t){u(e).on(n,t.callback);});},u.prototype.mirror.select=function(t,e){u(t).is("select")&&(e.value=t.value);},u.prototype.mirror.textarea=function(t,e){u(t).is("textarea")&&(e.value=t.value);},u.prototype.closest=function(e){return this.map(function(t){do{if(u(t).is(e))return t}while((t=t.parentNode)&&t!==document)})},u.prototype.data=function(t,e){return this.attr(t,e,!0)},u.prototype.each=function(t){return this.nodes.forEach(t.bind(this)),this},u.prototype.eacharg=function(n,r){return this.each(function(e,t){this.args(n,e,t).forEach(function(t){r.call(this,e,t);},this);})},u.prototype.empty=function(){return this.each(function(t){for(;t.firstChild;)t.removeChild(t.firstChild);})},u.prototype.filter=function(e){var t=function(t){return t.matches=t.matches||t.msMatchesSelector||t.webkitMatchesSelector,t.matches(e||"*")};return "function"==typeof e&&(t=e),e instanceof u&&(t=function(t){return -1!==e.nodes.indexOf(t)}),u(this.nodes.filter(t))},u.prototype.find=function(e){return this.map(function(t){return u(e||"*",t)})},u.prototype.first=function(){return this.nodes[0]||!1},u.prototype.generate=function(t){return /^\s*<tr[> ]/.test(t)?u(document.createElement("table")).html(t).children().children().nodes:/^\s*<t(h|d)[> ]/.test(t)?u(document.createElement("table")).html(t).children().children().children().nodes:/^\s*</.test(t)?u(document.createElement("div")).html(t).children().nodes:document.createTextNode(t)},u.prototype.handle=function(){var t=this.slice(arguments).map(function(e){return "function"==typeof e?function(t){t.preventDefault(),e.apply(this,arguments);}:e},this);return this.on.apply(this,t)},u.prototype.hasClass=function(){return this.is("."+this.args(arguments).join("."))},u.prototype.html=function(e){return void 0===e?this.first().innerHTML||"":this.each(function(t){t.innerHTML=e;})},u.prototype.is=function(t){return 0<this.filter(t).length},u.prototype.isInPage=function(t){return t!==document.body&&document.body.contains(t)},u.prototype.last=function(){return this.nodes[this.length-1]||!1},u.prototype.map=function(t){return t?u(this.array(t)).unique():this},u.prototype.not=function(e){return this.filter(function(t){return !u(t).is(e||!0)})},u.prototype.off=function(t,e,n){var r=null==e&&null==n,o=null,i=e;return "string"==typeof e&&(o=e,i=n),this.eacharg(t,function(e,n){u(e._e?e._e[n]:[]).each(function(t){(r||t.orig_callback===i&&t.selector===o)&&e.removeEventListener(n,t.callback);});})},u.prototype.on=function(t,e,o){var i=null,n=e;"string"==typeof e&&(i=e,n=o,e=function(e){var n=arguments,r=!1;u(e.currentTarget).find(i).each(function(t){if(t===e.target||t.contains(e.target)){r=!0;try{Object.defineProperty(e,"currentTarget",{get:function(){return t}});}catch(t){}o.apply(t,n);}}),r||e.currentTarget!==e.target||o.apply(e.target,n);});var r=function(t){return e.apply(this,[t].concat(t.detail||[]))};return this.eacharg(t,function(t,e){t.addEventListener(e,r),t._e=t._e||{},t._e[e]=t._e[e]||[],t._e[e].push({callback:r,orig_callback:n,selector:i});})},u.prototype.pairs=function(n,t,e,r){if(void 0!==t){var o=n;(n={})[o]=t;}return "object"==typeof n?this.each(function(t){for(var e in n)r(t,e,n[e]);}):this.length?e(this.first(),n):""},u.prototype.param=function(e){return Object.keys(e).map(function(t){return this.uri(t)+"="+this.uri(e[t])}.bind(this)).join("&")},u.prototype.parent=function(t){return this.map(function(t){return t.parentNode}).filter(t)},u.prototype.prepend=function(t,e){return this.adjacent(t,e,function(t,e){t.insertBefore(e,t.firstChild);})},u.prototype.remove=function(){return this.each(function(t){t.parentNode&&t.parentNode.removeChild(t);})},u.prototype.removeClass=function(){return this.eacharg(arguments,function(t,e){t.classList.remove(e);})},u.prototype.replace=function(t,e){var n=[];return this.adjacent(t,e,function(t,e){n=n.concat(this.slice(e.children)),t.parentNode.replaceChild(e,t);}),u(n)},u.prototype.scroll=function(){return this.first().scrollIntoView({behavior:"smooth"}),this},u.prototype.select=function(t,e){return t=t.replace(/^\s*/,"").replace(/\s*$/,""),/^</.test(t)?u().generate(t):(e||document).querySelectorAll(t)},u.prototype.serialize=function(){var r=this;return this.slice(this.first().elements).reduce(function(e,n){return !n.name||n.disabled||"file"===n.type?e:/(checkbox|radio)/.test(n.type)&&!n.checked?e:"select-multiple"===n.type?(u(n.options).each(function(t){t.selected&&(e+="&"+r.uri(n.name)+"="+r.uri(t.value));}),e):e+"&"+r.uri(n.name)+"="+r.uri(n.value)},"").slice(1)},u.prototype.siblings=function(t){return this.parent().children(t).not(this)},u.prototype.size=function(){return this.first().getBoundingClientRect()},u.prototype.slice=function(t){return t&&0!==t.length&&"string"!=typeof t&&"[object Function]"!==t.toString()?t.length?[].slice.call(t.nodes||t):[t]:[]},u.prototype.str=function(e,n){return function(t){return "function"==typeof t?t.call(this,e,n):t.toString()}},u.prototype.text=function(e){return void 0===e?this.first().textContent||"":this.each(function(t){t.textContent=e;})},u.prototype.toggleClass=function(t,e){return !!e===e?this[e?"addClass":"removeClass"](t):this.eacharg(t,function(t,e){t.classList.toggle(e);})},u.prototype.trigger=function(t){var o=this.slice(arguments).slice(1);return this.eacharg(t,function(t,e){var n,r={bubbles:!0,cancelable:!0,detail:o};try{n=new window.CustomEvent(e,r);}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent(e,!0,!0,o);}t.dispatchEvent(n);})},u.prototype.unique=function(){return u(this.nodes.reduce(function(t,e){return null!=e&&!1!==e&&-1===t.indexOf(e)?t.concat(e):t},[]))},u.prototype.uri=function(t){return encodeURIComponent(t).replace(/!/g,"%21").replace(/'/g,"%27").replace(/\(/g,"%28").replace(/\)/g,"%29").replace(/\*/g,"%2A").replace(/%20/g,"+")},u.prototype.wrap=function(t){return this.map(function(e){return u(t).each(function(t){(function(t){for(;t.firstElementChild;)t=t.firstElementChild;return u(t)})(t).append(e.cloneNode(!0)),e.parentNode.replaceChild(t,e);})})},module.exports&&(module.exports=u,module.exports.u=u);
+var u=function(t,e){return this instanceof u?t instanceof u?t:("string"==typeof t&&(t=this.select(t,e)),t&&t.nodeName&&(t=[t]),void(this.nodes=this.slice(t))):new u(t,e)};u.prototype={get length(){return this.nodes.length}},u.prototype.nodes=[],u.prototype.addClass=function(){return this.eacharg(arguments,function(t,e){t.classList.add(e);})},u.prototype.adjacent=function(i,t,n){return "number"==typeof t&&(t=0===t?[]:new Array(t).join().split(",").map(Number.call,Number)),this.each(function(r,o){var e=document.createDocumentFragment();u(t||{}).map(function(t,e){var n="function"==typeof i?i.call(this,t,e,r,o):i;return "string"==typeof n?this.generate(n):u(n)}).each(function(t){this.isInPage(t)?e.appendChild(u(t).clone().first()):e.appendChild(t);}),n.call(this,r,e);})},u.prototype.after=function(t,e){return this.adjacent(t,e,function(t,e){t.parentNode.insertBefore(e,t.nextSibling);})},u.prototype.append=function(t,e){return this.adjacent(t,e,function(t,e){t.appendChild(e);})},u.prototype.args=function(t,e,n){return "function"==typeof t&&(t=t(e,n)),"string"!=typeof t&&(t=this.slice(t).map(this.str(e,n))),t.toString().split(/[\s,]+/).filter(function(t){return t.length})},u.prototype.array=function(o){o=o;var i=this;return this.nodes.reduce(function(t,e,n){var r;return o?((r=o.call(i,e,n))||(r=!1),"string"==typeof r&&(r=u(r)),r instanceof u&&(r=r.nodes)):r=e.innerHTML,t.concat(!1!==r?r:[])},[])},u.prototype.attr=function(t,e,r){return r=r?"data-":"",this.pairs(t,e,function(t,e){return t.getAttribute(r+e)},function(t,e,n){t.setAttribute(r+e,n);})},u.prototype.before=function(t,e){return this.adjacent(t,e,function(t,e){t.parentNode.insertBefore(e,t);})},u.prototype.children=function(t){return this.map(function(t){return this.slice(t.children)}).filter(t)},u.prototype.clone=function(){return this.map(function(t,e){var n=t.cloneNode(!0),r=this.getAll(n);return this.getAll(t).each(function(t,e){for(var n in this.mirror)this.mirror[n]&&this.mirror[n](t,r.nodes[e]);}),n})},u.prototype.getAll=function(t){return u([t].concat(u("*",t).nodes))},u.prototype.mirror={},u.prototype.mirror.events=function(t,e){if(t._e)for(var n in t._e)t._e[n].forEach(function(t){u(e).on(n,t);});},u.prototype.mirror.select=function(t,e){u(t).is("select")&&(e.value=t.value);},u.prototype.mirror.textarea=function(t,e){u(t).is("textarea")&&(e.value=t.value);},u.prototype.closest=function(e){return this.map(function(t){do{if(u(t).is(e))return t}while((t=t.parentNode)&&t!==document)})},u.prototype.data=function(t,e){return this.attr(t,e,!0)},u.prototype.each=function(t){return this.nodes.forEach(t.bind(this)),this},u.prototype.eacharg=function(n,r){return this.each(function(e,t){this.args(n,e,t).forEach(function(t){r.call(this,e,t);},this);})},u.prototype.empty=function(){return this.each(function(t){for(;t.firstChild;)t.removeChild(t.firstChild);})},u.prototype.filter=function(e){var t=function(t){return t.matches=t.matches||t.msMatchesSelector||t.webkitMatchesSelector,t.matches(e||"*")};return "function"==typeof e&&(t=e),e instanceof u&&(t=function(t){return -1!==e.nodes.indexOf(t)}),u(this.nodes.filter(t))},u.prototype.find=function(e){return this.map(function(t){return u(e||"*",t)})},u.prototype.first=function(){return this.nodes[0]||!1},u.prototype.generate=function(t){return /^\s*<tr[> ]/.test(t)?u(document.createElement("table")).html(t).children().children().nodes:/^\s*<t(h|d)[> ]/.test(t)?u(document.createElement("table")).html(t).children().children().children().nodes:/^\s*</.test(t)?u(document.createElement("div")).html(t).children().nodes:document.createTextNode(t)},u.prototype.handle=function(){var t=this.slice(arguments).map(function(e){return "function"==typeof e?function(t){t.preventDefault(),e.apply(this,arguments);}:e},this);return this.on.apply(this,t)},u.prototype.hasClass=function(){return this.is("."+this.args(arguments).join("."))},u.prototype.html=function(e){return void 0===e?this.first().innerHTML||"":this.each(function(t){t.innerHTML=e;})},u.prototype.is=function(t){return 0<this.filter(t).length},u.prototype.isInPage=function(t){return t!==document.body&&document.body.contains(t)},u.prototype.last=function(){return this.nodes[this.length-1]||!1},u.prototype.map=function(t){return t?u(this.array(t)).unique():this},u.prototype.not=function(e){return this.filter(function(t){return !u(t).is(e||!0)})},u.prototype.off=function(t){return this.eacharg(t,function(e,n){u(e._e?e._e[n]:[]).each(function(t){e.removeEventListener(n,t);});})},u.prototype.on=function(t,e,r){if("string"==typeof e){var o=e;e=function(e){var n=arguments;u(e.currentTarget).find(o).each(function(t){if(t===e.target||t.contains(e.target)){try{Object.defineProperty(e,"currentTarget",{get:function(){return t}});}catch(t){}r.apply(t,n);}});};}var n=function(t){return e.apply(this,[t].concat(t.detail||[]))};return this.eacharg(t,function(t,e){t.addEventListener(e,n),t._e=t._e||{},t._e[e]=t._e[e]||[],t._e[e].push(n);})},u.prototype.pairs=function(n,t,e,r){if(void 0!==t){var o=n;(n={})[o]=t;}return "object"==typeof n?this.each(function(t){for(var e in n)r(t,e,n[e]);}):this.length?e(this.first(),n):""},u.prototype.param=function(e){return Object.keys(e).map(function(t){return this.uri(t)+"="+this.uri(e[t])}.bind(this)).join("&")},u.prototype.parent=function(t){return this.map(function(t){return t.parentNode}).filter(t)},u.prototype.prepend=function(t,e){return this.adjacent(t,e,function(t,e){t.insertBefore(e,t.firstChild);})},u.prototype.remove=function(){return this.each(function(t){t.parentNode&&t.parentNode.removeChild(t);})},u.prototype.removeClass=function(){return this.eacharg(arguments,function(t,e){t.classList.remove(e);})},u.prototype.replace=function(t,e){var n=[];return this.adjacent(t,e,function(t,e){n=n.concat(this.slice(e.children)),t.parentNode.replaceChild(e,t);}),u(n)},u.prototype.scroll=function(){return this.first().scrollIntoView({behavior:"smooth"}),this},u.prototype.select=function(t,e){return t=t.replace(/^\s*/,"").replace(/\s*$/,""),/^</.test(t)?u().generate(t):(e||document).querySelectorAll(t)},u.prototype.serialize=function(){var r=this;return this.slice(this.first().elements).reduce(function(e,n){return !n.name||n.disabled||"file"===n.type?e:/(checkbox|radio)/.test(n.type)&&!n.checked?e:"select-multiple"===n.type?(u(n.options).each(function(t){t.selected&&(e+="&"+r.uri(n.name)+"="+r.uri(t.value));}),e):e+"&"+r.uri(n.name)+"="+r.uri(n.value)},"").slice(1)},u.prototype.siblings=function(t){return this.parent().children(t).not(this)},u.prototype.size=function(){return this.first().getBoundingClientRect()},u.prototype.slice=function(t){return t&&0!==t.length&&"string"!=typeof t&&"[object Function]"!==t.toString()?t.length?[].slice.call(t.nodes||t):[t]:[]},u.prototype.str=function(e,n){return function(t){return "function"==typeof t?t.call(this,e,n):t.toString()}},u.prototype.text=function(e){return void 0===e?this.first().textContent||"":this.each(function(t){t.textContent=e;})},u.prototype.toggleClass=function(t,e){return !!e===e?this[e?"addClass":"removeClass"](t):this.eacharg(t,function(t,e){t.classList.toggle(e);})},u.prototype.trigger=function(t){var o=this.slice(arguments).slice(1);return this.eacharg(t,function(t,e){var n,r={bubbles:!0,cancelable:!0,detail:o};try{n=new window.CustomEvent(e,r);}catch(t){(n=document.createEvent("CustomEvent")).initCustomEvent(e,!0,!0,o);}t.dispatchEvent(n);})},u.prototype.unique=function(){return u(this.nodes.reduce(function(t,e){return null!=e&&!1!==e&&-1===t.indexOf(e)?t.concat(e):t},[]))},u.prototype.uri=function(t){return encodeURIComponent(t).replace(/!/g,"%21").replace(/'/g,"%27").replace(/\(/g,"%28").replace(/\)/g,"%29").replace(/\*/g,"%2A").replace(/%20/g,"+")},u.prototype.wrap=function(t){return this.map(function(e){return u(t).each(function(t){(function(t){for(;t.firstElementChild;)t=t.firstElementChild;return u(t)})(t).append(e.cloneNode(!0)),e.parentNode.replaceChild(t,e);})})},module.exports&&(module.exports=u,module.exports.u=u);
 });
 var umbrella_min_1 = umbrella_min.u;
 
@@ -30,10 +46,8 @@ function setElementScroll(element, x, y){
     }
 }
 
-function getTargetScrollLocation(scrollSettings, parent){
-    var align = scrollSettings.align,
-        target = scrollSettings.target,
-        targetPosition = target.getBoundingClientRect(),
+function getTargetScrollLocation(target, parent, align){
+    var targetPosition = target.getBoundingClientRect(),
         parentPosition,
         x,
         y,
@@ -48,7 +62,7 @@ function getTargetScrollLocation(scrollSettings, parent){
         leftScalar = leftAlign,
         topScalar = topAlign;
 
-    if(scrollSettings.isWindow(parent)){
+    if(parent.self === parent){
         targetWidth = Math.min(targetPosition.width, parent.innerWidth);
         targetHeight = Math.min(targetPosition.height, parent.innerHeight);
         x = targetPosition.left + parent.pageXOffset - parent.innerWidth * leftScalar + targetWidth * leftScalar;
@@ -65,10 +79,10 @@ function getTargetScrollLocation(scrollSettings, parent){
         var offsetTop = targetPosition.top - (parentPosition.top - parent.scrollTop);
         x = offsetLeft + (targetWidth * leftScalar) - parent.clientWidth * leftScalar;
         y = offsetTop + (targetHeight * topScalar) - parent.clientHeight * topScalar;
-        x -= leftOffset;
-        y -= topOffset;
         x = Math.max(Math.min(x, parent.scrollWidth - parent.clientWidth), 0);
         y = Math.max(Math.min(y, parent.scrollHeight - parent.clientHeight), 0);
+        x -= leftOffset;
+        y -= topOffset;
         differenceX = x - parent.scrollLeft;
         differenceY = y - parent.scrollTop;
     }
@@ -83,22 +97,24 @@ function getTargetScrollLocation(scrollSettings, parent){
 
 function animate(parent){
     var scrollSettings = parent._scrollSettings;
-
     if(!scrollSettings){
         return;
     }
 
-    var maxSynchronousAlignments = scrollSettings.maxSynchronousAlignments;
-
-    var location = getTargetScrollLocation(scrollSettings, parent),
+    var location = getTargetScrollLocation(scrollSettings.target, parent, scrollSettings.align),
         time = Date.now() - scrollSettings.startTime,
         timeValue = Math.min(1 / scrollSettings.time * time, 1);
 
-    if(scrollSettings.endIterations >= maxSynchronousAlignments){
+    if(
+        time > scrollSettings.time &&
+        scrollSettings.endIterations > 3
+    ){
         setElementScroll(parent, location.x, location.y);
         parent._scrollSettings = null;
         return scrollSettings.end(COMPLETE);
     }
+
+    scrollSettings.endIterations++;
 
     var easeValue = 1 - scrollSettings.ease(timeValue);
 
@@ -107,24 +123,19 @@ function animate(parent){
         location.y - location.differenceY * easeValue
     );
 
+    // At the end of animation, loop synchronously
+    // to try and hit the taget location.
     if(time >= scrollSettings.time){
-        scrollSettings.endIterations++;
         return animate(parent);
     }
 
     raf(animate.bind(null, parent));
 }
-
-function defaultIsWindow(target){
-    return target.self === target
-}
-
 function transitionScrollTo(target, parent, settings, callback){
     var idle = !parent._scrollSettings,
         lastSettings = parent._scrollSettings,
         now = Date.now(),
-        cancelHandler,
-        passiveOptions = { passive: true };
+        endHandler;
 
     if(lastSettings){
         lastSettings.end(CANCELED);
@@ -132,51 +143,31 @@ function transitionScrollTo(target, parent, settings, callback){
 
     function end(endType){
         parent._scrollSettings = null;
-
         if(parent.parentElement && parent.parentElement._scrollSettings){
             parent.parentElement._scrollSettings.end(endType);
         }
-
-        if(settings.debug){
-            console.log('Scrolling ended with type', endType, 'for', parent);
-        }
-
         callback(endType);
-        if(cancelHandler){
-            parent.removeEventListener('touchstart', cancelHandler, passiveOptions);
-            parent.removeEventListener('wheel', cancelHandler, passiveOptions);
-        }
-    }
-
-    var maxSynchronousAlignments = settings.maxSynchronousAlignments;
-
-    if(maxSynchronousAlignments == null){
-        maxSynchronousAlignments = 3;
+        parent.removeEventListener('touchstart', endHandler, { passive: true });
+        parent.removeEventListener('wheel', endHandler, { passive: true });
     }
 
     parent._scrollSettings = {
-        startTime: now,
+        startTime: lastSettings ? lastSettings.startTime : Date.now(),
         endIterations: 0,
         target: target,
-        time: settings.time,
+        time: settings.time + (lastSettings ? now - lastSettings.startTime : 0),
         ease: settings.ease,
         align: settings.align,
-        isWindow: settings.isWindow || defaultIsWindow,
-        maxSynchronousAlignments: maxSynchronousAlignments,
         end: end
     };
 
-    if(!('cancellable' in settings) || settings.cancellable){
-        cancelHandler = end.bind(null, CANCELED);
-        parent.addEventListener('touchstart', cancelHandler, passiveOptions);
-        parent.addEventListener('wheel', cancelHandler, passiveOptions);
-    }
+    endHandler = end.bind(null, CANCELED);
+    parent.addEventListener('touchstart', endHandler, { passive: true });
+    parent.addEventListener('wheel', endHandler, { passive: true });
 
     if(idle){
         animate(parent);
     }
-
-    return cancelHandler
 }
 
 function defaultIsScrollable(element){
@@ -192,26 +183,6 @@ function defaultIsScrollable(element){
 
 function defaultValidTarget(){
     return true;
-}
-
-function findParentElement(el){
-    if (el.assignedSlot) {
-        return findParentElement(el.assignedSlot);
-    }
-
-    if (el.parentElement) {
-        if(el.parentElement.tagName === 'BODY'){
-            return el.parentElement.ownerDocument.defaultView || el.parentElement.ownerDocument.ownerWindow;
-        }
-        return el.parentElement;
-    }
-
-    if (el.getRootNode){
-        var parent = el.getRootNode();
-        if(parent.nodeType === 11) {
-            return parent.host;
-        }
-    }
 }
 
 var scrollIntoView = function(target, settings, callback){
@@ -231,8 +202,8 @@ var scrollIntoView = function(target, settings, callback){
     settings.time = isNaN(settings.time) ? 1000 : settings.time;
     settings.ease = settings.ease || function(v){return 1 - Math.pow(1 - v, v / 2);};
 
-    var parent = findParentElement(target),
-        parents = 1;
+    var parent = target.parentElement,
+        parents = 0;
 
     function done(endType){
         parents--;
@@ -244,35 +215,23 @@ var scrollIntoView = function(target, settings, callback){
     var validTarget = settings.validTarget || defaultValidTarget;
     var isScrollable = settings.isScrollable;
 
-    if(settings.debug){
-        console.log('About to scroll to', target);
-
-        if(!parent){
-            console.error('Target did not have a parent, is it mounted in the DOM?');
-        }
-    }
-
-    var cancel;
-
     while(parent){
-        if(settings.debug){
-            console.log('Scrolling parent node', parent);
-        }
-
         if(validTarget(parent, parents) && (isScrollable ? isScrollable(parent, defaultIsScrollable) : defaultIsScrollable(parent))){
             parents++;
-            cancel = transitionScrollTo(target, parent, settings, done);
+            transitionScrollTo(target, parent, settings, done);
         }
 
-        parent = findParentElement(parent);
+        parent = parent.parentElement;
 
         if(!parent){
-            done(COMPLETE);
-            break;
+            return;
+        }
+
+        if(parent.tagName === 'BODY'){
+            parent = parent.ownerDocument;
+            parent = parent.defaultView || parent.ownerWindow;
         }
     }
-
-    return cancel;
 };
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
@@ -420,13 +379,8 @@ var Step = function () {
     this.visible = false;
     this._target = null;
     this.context = context;
-    this._timerHandler = null;
-    this._scrollCancel = null;
     var data = void 0;
-    if ((typeof step === "undefined" ? "undefined" : _typeof(step)) === "object") {
-      if (!(step.hasOwnProperty("title") && step.hasOwnProperty("content") && step.hasOwnProperty("step"))) {
-        throw new Error("invalid step parameter:\n" + JSON.stringify(step, null, 2) + "\n" + "see this doc for more detail: https://github.com/LikaloLLC/tourguide.js#json-based-approach");
-      }
+    if (step.hasOwnProperty("title")) {
       data = step;
       this.selector = step.selector;
     } else {
@@ -501,7 +455,6 @@ var Step = function () {
         _style.left = 0 + "px";
         _style.width = 0 + "px";
         _style.height = 0 + "px";
-        _style.boxShadow = "none";
         var _tooltip = this.tooltip;
         _style = _tooltip.first().style;
         _style.opacity = 0.1;
@@ -509,8 +462,6 @@ var Step = function () {
         _style.left = _view.width / 2 + "px";
         _tooltip.addClass("guided-tour-arrow-none");
         _tooltip.addClass("guided-tour-center");
-
-        if (this.context._background) this.context._background.show();
       }
     }
   }, {
@@ -534,17 +485,10 @@ var Step = function () {
       style.opacity = 1;
     }
   }, {
-    key: "cancel",
-    value: function cancel() {
-      if (this._timerHandler) clearTimeout(this._timerHandler);
-      if (this._scrollCancel) this._scrollCancel();
-    }
-  }, {
     key: "show",
     value: function show() {
       var _this3 = this;
 
-      this.cancel();
       if (!this.visible) {
         var show = function show() {
           _this3.position();
@@ -553,11 +497,10 @@ var Step = function () {
           _this3.visible = true;
         };
         if (this.target) {
-          this._scrollCancel = scrollIntoView(this.target, {
-            time: this.context.options.animationspeed,
-            cancellable: true
+          scrollIntoView(this.target, {
+            time: this.context.options.animationspeed
           }, show);
-        } else this._timerHandler = setTimeout(show, this.context.options.animationspeed);
+        } else setTimeout(show, this.context.options.animationspeed);
         return true;
       }
       return false;
@@ -565,7 +508,6 @@ var Step = function () {
   }, {
     key: "hide",
     value: function hide() {
-      this.cancel();
       if (this.visible) {
         this.el.removeClass("active");
         this.tooltip.removeClass("guided-tour-arrow-top");
@@ -581,75 +523,6 @@ var Step = function () {
 
       // eslint-disable-next-line no-undef
       return _ref = this, index = _ref.index, title = _ref.title, contnet = _ref.contnet, image = _ref.image, active = _ref.active, _ref;
-    }
-  }]);
-  return Step;
-}();
-
-var Step$1 = function () {
-  createClass(Step, [{
-    key: "el",
-    get: function get$$1() {
-      if (!this.container) {
-        this.container = umbrella_min("<div role=\"dialog\" class=\"guided-tour-background\"></div>");
-      }
-      return this.container;
-    }
-  }]);
-
-  function Step(context) {
-    classCallCheck(this, Step);
-
-    this.container = null;
-    this.active = false;
-    this.context = context;
-  }
-
-  createClass(Step, [{
-    key: "attach",
-    value: function attach() {
-      var root = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "body";
-
-      umbrella_min(root).append(this.el);
-    }
-  }, {
-    key: "remove",
-    value: function remove() {
-      this.hide();
-      this.el.remove();
-    }
-  }, {
-    key: "show",
-    value: function show() {
-      if (!this.visible) {
-        this.el.addClass("active");
-        this.visible = true;
-        return true;
-      }
-      return false;
-    }
-  }, {
-    key: "hide",
-    value: function hide() {
-      var _this = this;
-
-      if (this.visible) {
-        var hide = function hide() {
-          _this.el.removeClass("active");
-          _this.visible = false;
-        };
-        setTimeout(hide, this.context.options.animationspeed);
-        return true;
-      }
-      return false;
-    }
-  }, {
-    key: "toJSON",
-    value: function toJSON() {
-      var _ref;
-
-      // eslint-disable-next-line no-undef
-      return _ref = this, active = _ref.active, _ref;
     }
   }]);
   return Step;
@@ -731,7 +604,6 @@ var Tour = function () {
       onStep: function onStep() {},
       onAction: function onAction() {}
     }, options);
-    this._background = null;
     this._steps = [];
     this._current = 0;
     this._active = false;
@@ -774,7 +646,6 @@ var Tour = function () {
       var _this2 = this;
 
       this.reset();
-      this._background = new Step$1(this);
       if (this._stepsSrc === StepsSource.DOM) {
         var steps = umbrella_min(this._options.selector).nodes;
         this._steps = steps.map(function (el) {
@@ -814,7 +685,6 @@ var Tour = function () {
         if (!this._active) {
           umbrella_min(this._options.root).addClass("guided-tour");
           this.init();
-          this._background.attach(this._options.root);
           this._steps.forEach(function (step) {
             return step.attach(_this3._options.root);
           });
@@ -868,9 +738,7 @@ var Tour = function () {
     value: function go(step, type) {
       if (this._active && this._current !== step) {
         this.currentstep.hide();
-        this._background.show();
         this._current = clamp(step, 0, this.length - 1);
-        this._background.hide();
         this.currentstep.show();
         this._options.onStep(this.currentstep, type);
       }
@@ -881,7 +749,6 @@ var Tour = function () {
       if (this._active) {
         this.currentstep.hide();
         this._active = false;
-        this._background.remove();
         this._steps.forEach(function (step) {
           return step.remove();
         });

@@ -12,10 +12,6 @@
     "ecmaVersion": 9
   },
   "rules": {
-    "no-console": [
-      "error",
-      { "allow": ["warn", "error"] }
-    ],
     "indent": [
       "warn",
       2
